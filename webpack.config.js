@@ -7,9 +7,10 @@ const HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
 });
 
 module.exports = {
+ 
   // 檔案起始點從 entry 進入，因為是陣列所以也可以是多個檔案
   entry: [
-    './app/index.js',
+    './app/apple.js',
   ],
   // output 是放入產生出來的結果的相關參數
   output: {
@@ -22,11 +23,13 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['es2015', 'react'],
-        },
+        loader: 'babel-loader'
+       
       },
+      {
+        test : /\.css$/,loader : "style-loader!css-loader"} ,//这里用了样式分离出来的插件，如果不想分离出来，可以直接这样写 loader:'style!css!sass'
+       {test: /\.scss$/, loader: "style!css!sass"}   
+
     ],
   },
   // devServer 則是 webpack-dev-server 設定
@@ -34,6 +37,9 @@ module.exports = {
     inline: true,
     port: 8000,
   },
+  
+  
   // plugins 放置所使用的外掛
-  plugins: [HTMLWebpackPluginConfig],
+  plugins: [HTMLWebpackPluginConfig], 
 };
+
