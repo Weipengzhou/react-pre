@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect} from 'react-redux';
-import '../css/apple.scss';
+import '../styles/apple.scss';
 
 class AppleBusket extends React.Component{
 
